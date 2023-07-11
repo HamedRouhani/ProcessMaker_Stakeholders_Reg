@@ -1,0 +1,271 @@
+$Registered_By_USR_UID = @@ExecuteID;
+$Confirmed_By_USR_UID = @@ConfirmID;
+$Requested_By_USR_UID = @@RequestID ;
+$Time_Stamp = @@Time_Stamp;
+$IsDelete = @@IsDelete;
+$IsActive = @@IsActive;
+
+$Supplier_Code = @@Supplier_Code;
+$Supplier_Replacement_Code = @@Supplier_Replacement_Code;
+$Supplier_Abbr_Title = @@Supplier_Abbr_Title;
+$Supplier_Full_Title = @@Supplier_Full_Title;
+$Established_Date = @@Established_Date;
+$Supplier_Registration_Date = @@Supplier_Registration_Date;
+$Supplier_Economic_Code = @@Supplier_Economic_Code;
+$Supplier_Phone_No = @@Supplier_Phone_No;
+$Supplier_Fax_No = @@Supplier_Fax_No;
+$Supplier_Address = @@Supplier_Address;
+$Supplier_Zipcode = @@Supplier_Zipcode;
+$Supplier_Email = @@Supplier_Email;
+$CEO_Full_Name = @@CEO_Full_Name;
+$CEO_National_Code = @@CEO_National_Code;
+$Supplier_Party = @@Supplier_Party;
+$Supplier_Ownership = @@Supplier_Ownership;
+$CurrentYear = @@CurrentYear;
+$Interested_Party = @@Interested_Party;
+$MT_ID_Detector = @@MT_ID_Detector;
+
+$SUBJECT_CLASS_CODE = 'SC0001';
+$Subject_Row_No = @@Subject_Row_No;
+
+if (@@Reg_Type == '1')
+{
+$sql = "INSERT INTO PMT_TB110003 
+(Registered_By_USR_UID,
+Confirmed_By_USR_UID,
+Requested_By_USR_UID,
+Time_Stamp,
+IsDelete,
+IsActive,
+SUBJECT_CLASS_CODE,
+Supplier_Code,
+Supplier_Abbr_Title,
+Supplier_Full_Title,
+Established_Date,
+Supplier_Registration_Date,
+Supplier_Economic_Code,
+Supplier_Phone_No,
+Supplier_Fax_No,
+Supplier_Address,
+Supplier_Zipcode,
+Supplier_Email,
+CEO_Full_Name,
+CEO_National_Code,
+Supplier_Party,
+CurrentYear,
+Supplier_Ownership,
+Interested_Party)
+		
+		VALUES ('$Registered_By_USR_UID',
+		'$Confirmed_By_USR_UID',
+		'$Requested_By_USR_UID',
+		'$Time_Stamp',
+		'$IsDelete',
+		'$IsActive',
+		'$SUBJECT_CLASS_CODE',
+		'$Supplier_Code',
+		'$Supplier_Abbr_Title',
+		'$Supplier_Full_Title',
+		'$Established_Date',
+		'$Supplier_Registration_Date',
+		'$Supplier_Economic_Code',
+		'$Supplier_Phone_No',
+		'$Supplier_Fax_No',
+		'$Supplier_Address',
+		'$Supplier_Zipcode',
+		'$Supplier_Email',
+		'$CEO_Full_Name',
+		'$CEO_National_Code',
+		'$Supplier_Party',
+		'$CurrentYear',
+		'$Supplier_Ownership',
+		'$Interested_Party')";
+
+for ($i = 1; $i <= count(@=Subject); $i++) {	
+   $row = @=Subject[$i];
+   $Subject_Code = mysql_real_escape_string($row['Subject_Code']);
+   $Subject_Title = mysql_real_escape_string($row['Subject_Title']);
+   $subsql = "INSERT INTO PMT_TB120011 
+   (Registered_By_USR_UID,
+   Confirmed_By_USR_UID,
+   Requested_By_USR_UID,
+   Time_Stamp,
+   IsDelete,
+   IsActive,
+   Subject_Code,
+   Subject_Title,
+   SUBJECT_CLASS_CODE,
+   Supplier_Code,
+   Subject_Code_Rank) 
+VALUE ('$Registered_By_USR_UID',
+	'$Confirmed_By_USR_UID',
+	'$Requested_By_USR_UID',
+	'$Time_Stamp',
+	'$IsDelete',
+	'$IsActive',
+	'$Subject_Code',
+	'$Subject_Title',
+	'$SUBJECT_CLASS_CODE',
+	'$Supplier_Code',
+	'$i')";
+	if (@@Final_Confirmation == '1') {
+		executeQuery ($subsql);
+	}
+}
+	if (@@Final_Confirmation == '1') {
+		executeQuery ($sql);
+	}
+}	
+
+
+if (@@Reg_Type == '0')
+{
+$sql = "UPDATE PMT_TB110003 SET Registered_By_USR_UID = '$Registered_By_USR_UID',
+Confirmed_By_USR_UID = '$Confirmed_By_USR_UID',
+Requested_By_USR_UID = '$Requested_By_USR_UID',
+Time_Stamp = '$Time_Stamp',
+IsDelete = '$IsDelete',
+IsActive = '$IsActive' 
+WHERE ID ='$MT_ID_Detector'";
+
+for ($i = 1; $i <= count(@=Subject_Finder); $i++) {	
+   $row = @=Subject_Finder[$i];
+
+$subsql = "UPDATE PMT_TB120011 SET
+Registered_By_USR_UID = '$Registered_By_USR_UID',
+Confirmed_By_USR_UID = '$Confirmed_By_USR_UID',
+Requested_By_USR_UID = '$Requested_By_USR_UID',
+Time_Stamp = '$Time_Stamp',
+IsDelete = '$IsDelete',
+IsActive = '$IsActive' WHERE Subject_Code_Rank = '$i' and SUBJECT_CLASS_CODE = '$SUBJECT_CLASS_CODE' and Supplier_Code = '$Supplier_Replacement_Code'";
+	
+	if (@@Final_Confirmation == '1') {
+		executeQuery ($subsql);
+	}
+}
+
+	if (@@Final_Confirmation == '1') {
+		executeQuery ($sql);
+	}	
+}	
+
+if (@@Reg_Type == '2')
+{
+$sqlInsert = "INSERT INTO PMT_TB110003 
+(Registered_By_USR_UID,
+Confirmed_By_USR_UID,
+Requested_By_USR_UID,
+Time_Stamp,
+IsDelete,
+IsActive,
+SUBJECT_CLASS_CODE,
+Supplier_Code,
+Supplier_Abbr_Title,
+Supplier_Full_Title,
+Established_Date,
+Supplier_Registration_Date,
+Supplier_Economic_Code,
+Supplier_Phone_No,
+Supplier_Fax_No,
+Supplier_Address,
+Supplier_Zipcode,
+Supplier_Email,
+CEO_Full_Name,
+CEO_National_Code,
+Supplier_Party,
+CurrentYear,
+Supplier_Ownership,
+Interested_Party,
+Supplier_Replacement_Code)
+		
+		VALUES ('$Registered_By_USR_UID',
+		'$Confirmed_By_USR_UID',
+		'$Requested_By_USR_UID',
+		'$Time_Stamp',
+		'$IsDelete',
+		'$IsActive',
+		'$SUBJECT_CLASS_CODE',
+		'$Supplier_Code',
+		'$Supplier_Abbr_Title',
+		'$Supplier_Full_Title',
+		'$Established_Date',
+		'$Supplier_Registration_Date',
+		'$Supplier_Economic_Code',
+		'$Supplier_Phone_No',
+		'$Supplier_Fax_No',
+		'$Supplier_Address',
+		'$Supplier_Zipcode',
+		'$Supplier_Email',
+		'$CEO_Full_Name',
+		'$CEO_National_Code',
+		'$Supplier_Party',
+		'$CurrentYear',
+		'$Supplier_Ownership',
+		'$Interested_Party',
+		'$Supplier_Replacement_Code')";
+
+for ($i = 1; $i <= count(@=Subject); $i++) {	
+   $row = @=Subject[$i];
+   $Subject_Code = mysql_real_escape_string($row['Subject_Code']);
+   $Subject_Title = mysql_real_escape_string($row['Subject_Title']);
+   $subsqlInsert = "INSERT INTO PMT_TB120011 
+   (Registered_By_USR_UID,
+   Confirmed_By_USR_UID,
+   Requested_By_USR_UID,
+   Time_Stamp,
+   IsDelete,
+   IsActive,
+   Subject_Code,
+   Subject_Title,
+   SUBJECT_CLASS_CODE,
+   Supplier_Code,
+   Subject_Code_Rank,
+   Supplier_Replacement_Code) 
+VALUE ('$Registered_By_USR_UID',
+	'$Confirmed_By_USR_UID',
+	'$Requested_By_USR_UID',
+	'$Time_Stamp',
+	'$IsDelete',
+	'$IsActive',
+	'$Subject_Code',
+	'$Subject_Title',
+	'$SUBJECT_CLASS_CODE',
+	'$Supplier_Code',
+	'$i',
+	'$Supplier_Replacement_Code')";
+	if (@@Final_Confirmation == '1') {
+		executeQuery ($subsqlInsert);
+	}
+}
+	if (@@Final_Confirmation == '1') {
+		executeQuery ($sqlInsert);
+	}
+
+$sqlUpdate = "UPDATE PMT_TB110003 SET Registered_By_USR_UID = '$Registered_By_USR_UID',
+Confirmed_By_USR_UID = '$Confirmed_By_USR_UID',
+Requested_By_USR_UID = '$Requested_By_USR_UID',
+Time_Stamp = '$Time_Stamp',
+IsDelete = '1',
+IsActive = '$IsActive' 
+WHERE ID ='$MT_ID_Detector'";
+
+for ($i = 1; $i <= count(@=Subject_Finder); $i++) {	
+   $row = @=Subject_Finder[$i];
+
+$subsqlUpdate = "UPDATE PMT_TB120011 SET
+Registered_By_USR_UID = '$Registered_By_USR_UID',
+Confirmed_By_USR_UID = '$Confirmed_By_USR_UID',
+Requested_By_USR_UID = '$Requested_By_USR_UID',
+Time_Stamp = '$Time_Stamp',
+IsDelete = '1',
+IsActive = '$IsActive' WHERE Subject_Code_Rank = '$i' and SUBJECT_CLASS_CODE = '$SUBJECT_CLASS_CODE' and Supplier_Code = '$Supplier_Replacement_Code'";
+	
+	if (@@Final_Confirmation == '1') {
+		executeQuery ($subsqlUpdate);
+	}
+}
+
+	if (@@Final_Confirmation == '1') {
+		executeQuery ($sqlUpdate);
+	}
+}

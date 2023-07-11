@@ -1,0 +1,196 @@
+//‰„«Ì‘ ’›ÕÂ
+$("#498779296628242474de0c5077385319").css({"backgroundColor":"#ccccff"});
+$("#498779296628242474de0c5077385319").css({"border":"3px double #336699"});
+
+
+$("#title0000000001").css({"font-family":"b Titr","color":"#ffffff","background-color":"#336699","border-radius":"5px"});
+$("#title0000000001").css({"text-align":"center"});
+
+$("#Subject_Finder").css({"font-family":"ARIAL","background-color":"#E2F7BB","border-radius":"5px","margin-bottom":"20px"});
+
+$("#submit0000000001").css({"font-family":"b titr","margin-top":"20px"});
+
+//Å— ﬂ—œ‰ gridview  --- 
+if ($("#Description").getNumberRows() == 1 && $("#Description").getValue (1,1) =="") {
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',false);
+  	$("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  }else{
+	$("#Description").addRow();
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',false); 
+    $("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  };
+
+//  «ÀÌ—  ⁄ÌÌ‰ Ê÷⁄Ì  œ—ŒÊ«” 
+
+  $('#Search_Interested_Party').hide();
+  $('#Supplier_Replacement_Code').hide();
+  $('#Supplier_Abbr_Title').hide();
+  $('#Supplier_Full_Title').hide();
+  $('#Established_Date').hide();
+  $('#Supplier_Registration_Date').hide();
+  $('#Supplier_Economic_Code').hide();
+  $('#Supplier_Ownership_Find').hide();
+  $('#Supplier_Phone_No').hide();
+  $('#Supplier_Fax_No').hide();
+  $('#Supplier_Zipcode').hide();
+  $('#Supplier_Address').hide();
+  $('#Supplier_Email').hide();
+  $('#CEO_Full_Name').hide();
+  $('#CEO_National_Code').hide();
+  $('#Subject_Counter').hide();
+  $('#Subject_Finder').hide();
+  $('#MT_ID_Detector').hide();
+
+$("#Reg_Type").setOnchange(function(TVal) {
+
+  $('#Search_Interested_Party').hide();
+  $('#Supplier_Replacement_Code').hide();
+  $('#Supplier_Abbr_Title').hide();
+  $('#Supplier_Full_Title').hide();
+  $('#Established_Date').hide();
+  $('#Supplier_Registration_Date').hide();
+  $('#Supplier_Economic_Code').hide();
+  $('#Supplier_Ownership_Find').hide();
+  $('#Supplier_Phone_No').hide();
+  $('#Supplier_Fax_No').hide();
+  $('#Supplier_Zipcode').hide();
+  $('#Supplier_Address').hide();
+  $('#Supplier_Email').hide();
+  $('#CEO_Full_Name').hide();
+  $('#CEO_National_Code').hide();
+  $('#Subject_Finder').hide();
+  
+  TVal = $("#Reg_Type").getValue();
+  switch(true){
+      
+    case (TVal == 0) : 
+      alert ('»«Ì” Ì „Ê«—œ "Ã” ÃÊ œ— ⁄‰Ê«‰ ﬂ«„·" Ê "«‰ Œ«» ﬂœ ÿ—›Â«Ì –Ì‰›⁄" «‰ Œ«» ‘Ê‰œ!');
+      $('#Search_Interested_Party').show();
+      $('#Supplier_Replacement_Code').show();
+      $('#Supplier_Abbr_Title').show();
+      $('#Supplier_Full_Title').show();
+      $('#Established_Date').show();
+      $('#Supplier_Registration_Date').show();
+      $('#Supplier_Economic_Code').show();
+      $('#Supplier_Ownership_Find').show();
+      $('#Supplier_Phone_No').show();
+      $('#Supplier_Fax_No').show();
+      $('#Supplier_Zipcode').show();
+      $('#Supplier_Address').show();
+      $('#Supplier_Email').show();
+      $('#CEO_Full_Name').show();
+      $('#CEO_National_Code').show();
+  	  $('#Subject_Finder').show();
+      $("#Description").setValue('—œÌ› ﬂœ ÿ—› –Ì‰›⁄° ÃÂ  Õ–› «‰ Œ«» Ê «—”«· „Ì ê—œœ ... ',$("#Description").getNumberRows(),'2');
+      $('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true);
+      break;
+      
+    case (TVal == 1) :
+      $('#Search_Interested_Party').setValue("");
+      $('#Supplier_Replacement_Code').setValue("");
+      $('#Supplier_Abbr_Title').setValue("");
+      $('#Supplier_Full_Title').setValue("");
+      $('#Established_Date').setValue("");
+      $('#Supplier_Registration_Date').setValue("");
+      $('#Supplier_Economic_Code').setValue("");
+      $('#Supplier_Ownership_Find').setValue("");
+      $('#Supplier_Phone_No').setValue("");
+      $('#Supplier_Fax_No').setValue("");
+      $('#Supplier_Zipcode').setValue("");
+      $('#Supplier_Address').setValue("");
+      $('#Supplier_Email').setValue("");
+      $('#CEO_Full_Name').setValue("");
+      $('#CEO_National_Code').setValue("");
+      $("#Description").setValue('œ— „—Õ·Â »⁄œ «ÿ·«⁄«  «ÌÃ«œ ŒÊ«Âœ ‘œ  ... ',$("#Description").getNumberRows(),'2');
+      $('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true);
+      break;
+      
+    case (TVal == 2) : 
+      alert ('»«Ì” Ì „Ê«—œ "Ã” ÃÊ œ— ⁄‰Ê«‰ ﬂ«„·" Ê "«‰ Œ«» ﬂœ ÿ—›Â«Ì –Ì‰›⁄" «‰ Œ«» ‘Ê‰œ!');
+      $('#Search_Interested_Party').show();
+      $('#Supplier_Replacement_Code').show();
+      $('#Supplier_Abbr_Title').show();
+      $('#Supplier_Full_Title').show();
+      $('#Established_Date').show();
+      $('#Supplier_Registration_Date').show();
+      $('#Supplier_Economic_Code').show();
+      $('#Supplier_Ownership_Find').show();
+      $('#Supplier_Phone_No').show();
+      $('#Supplier_Fax_No').show();
+      $('#Supplier_Zipcode').show();
+      $('#Supplier_Address').show();
+      $('#Supplier_Email').show();
+      $('#CEO_Full_Name').show();
+      $('#CEO_National_Code').show();
+  	  $('#Subject_Finder').show();
+      $("#Description").setValue('—œÌ› ﬂœ ÿ—› –Ì‰›⁄° ÃÂ  Ã«Ìê“Ì‰Ì »« —œÌ›Ì ÃœÌœ «‰ Œ«» Ê «—”«· „Ì ê—œœ ... ',$("#Description").getNumberRows(),'2');
+      $('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true);
+      break;
+      
+    case (TVal == 3) : 
+      alert ('œ— «Ì‰ Õ«·   ‰Â« «„ﬂ«‰ Ã” ÃÊÌ «ÿ·«⁄«  ÊÃÊœ œ«—œ !');
+      $('#Search_Interested_Party').show();
+      $('#Supplier_Replacement_Code').show();
+      $('#Supplier_Abbr_Title').show();
+      $('#Supplier_Full_Title').show();
+      $('#Established_Date').show();
+      $('#Supplier_Registration_Date').show();
+      $('#Supplier_Economic_Code').show();
+      $('#Supplier_Ownership_Find').show();
+      $('#Supplier_Phone_No').show();
+      $('#Supplier_Fax_No').show();
+      $('#Supplier_Zipcode').show();
+      $('#Supplier_Address').show();
+      $('#Supplier_Email').show();
+      $('#CEO_Full_Name').show();
+      $('#CEO_National_Code').show();
+  	  $('#Subject_Finder').show();
+      $("#Description").setValue('Ê÷⁄Ì  Ã” ÃÊ ... «„ﬂ«‰ «œ«„Â ›—¬Ì‰œ ÊÃÊœ ‰œ«—œ !!! ',$("#Description").getNumberRows(),'2');
+      $('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true);
+      break;      
+  }
+});
+
+//  ÂÌÂ ‘—Õ »’Ê—  « Ê„« Ìﬂ
+$("#Subject_Finder").deleteRow();
+
+$("#Supplier_Replacement_Code").setOnchange(function(C1_Val) {
+
+  var rows = $("#Subject_Finder").getNumberRows();
+    for (var i=1; i <= rows; i++) {
+        $("#Subject_Finder").deleteRow();
+    }
+  
+  for (var i= 1 ; i <= parseInt($("#Subject_Counter").getValue()); i++) {
+
+    $("#Subject_Finder").addRow();
+    $("#Subject_Finder").setValue($("#Supplier_Replacement_Code").getValue(),i,4);
+    $("#Subject_Finder").setValue(i,i,5);
+
+  }
+
+});
+
+//œ— ’Ê— ÌﬂÂ ÃœÊ· «‰ Œ«» ‰‘Êœ ° ›—¬Ì‰œ «’·«Õ «Ã—« ‰‘Êœ
+
+$("#498779296628242474de0c5077385319").setOnSubmit(function(RVal,SCode) {
+
+  RVal = $("#Reg_Type").getValue();
+  SCode = $("#Supplier_Replacement_Code").getValue();
+
+  if (RVal == 3) {
+    alert (' œ— Õ«·  Ã” ÃÊ «„ﬂ«‰ «œ«„Â ›—¬Ì‰œ ÊÃÊœ ‰œ«—œ. ·ÿ›« ÌﬂÌ «“ „Ê«—œ "Õ–› «ÿ·«⁄« "° "«ÌÃ«œ «ÿ·«⁄« " Ê "Ã«Ìê“Ì‰Ì" —« «‰ Œ«» ﬂ‰Ìœ  !');
+    return false;
+  }
+  
+  if (RVal == 0 && SCode=="") {
+    alert (' œ— «Ì‰ Õ«·  «„ﬂ«‰ «œ«„Â ›—¬Ì‰œ ÊÃÊœ ‰œ«—œ. ·ÿ›« ÌﬂÌ «“ „Ê«—œ "ﬂœ ÿ—› –Ì‰›⁄" —« «‰ Œ«» ﬂ‰Ìœ  !');
+    return false;
+  }
+  
+  if (RVal == 2 && SCode=="") {
+    alert (' œ— «Ì‰ Õ«·  «„ﬂ«‰ «œ«„Â ›—¬Ì‰œ ÊÃÊœ ‰œ«—œ. ·ÿ›« ÌﬂÌ «“ „Ê«—œ "ﬂœ ÿ—› –Ì‰›⁄" —« «‰ Œ«» ﬂ‰Ìœ  !');
+    return false;
+  }
+  
+});

@@ -1,0 +1,76 @@
+//‰„«Ì‘ ’›ÕÂ
+$("#10488891662824279103ec4062633735").css({"backgroundColor":"#ccccff"});
+$("#10488891662824279103ec4062633735").css({"border":"3px double #336699"});
+
+
+$("#title0000000001").css({"font-family":"b Titr","color":"#ffffff","background-color":"#336699","border-radius":"5px"});
+$("#title0000000001").css({"text-align":"center"});
+
+$("#Subject").css({"font-family":"ARIAL","background-color":"#E2F7BB","border-radius":"5px","margin-bottom":"20px"});
+
+$("#submit0000000001").css({"font-family":"b titr","margin-top":"20px"});
+
+//Å— ﬂ—œ‰ gridview  --- 
+if ($("#Description").getNumberRows() == 1 && $("#Description").getValue (1,1) =="") {
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',false);
+  	$("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  }else{
+	$("#Description").addRow();
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',false); 
+    $("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  };
+
+// ‰„«Ì‘ Ãœ«Ê· Ã«Ìê“Ì‰Ì Ê À» 
+
+
+
+$("#Subject_Finder").hide();
+$("#Supplier_Replacement_Code").hide();
+$("#Subject").hide();
+$("#Supplier_Code").hide();
+
+
+var IVal = $("#Reg_Type").getValue();
+
+switch (true){
+  
+  case(IVal == 0):
+    $("#Subject_Finder").show();
+	$("#Supplier_Replacement_Code").show();
+	$("#Subject").hide();
+	$("#Supplier_Code").hide();
+    break;
+
+  case(IVal == 1):
+    $("#Subject_Finder").hide();
+	$("#Supplier_Replacement_Code").hide();
+	$("#Subject").show();
+	$("#Supplier_Code").show();
+    break;
+
+  case(IVal == 2):
+    $("#Subject_Finder").show();
+	$("#Supplier_Replacement_Code").show();
+	$("#Subject").show();
+	$("#Supplier_Code").show();
+    break;    
+  
+};
+
+// ⁄ÌÌ‰ Ê÷⁄Ì  »——”Ì
+
+$("#Subject_Row_No").hide();
+$("#CurrentYear").hide();
+
+
+$("#Final_Confirmation").setOnchange(function(TVal) {
+  TVal = $("#Final_Confirmation").getValue();
+  if (TVal == "1") {
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true); 
+	$('#Description').setValue(" €ÌÌ—«  œ— Å«Ìê«Â œ«œÂ À»  „Ì ê—œœ.",$("#Description").getNumberRows(),'2'); 
+  }
+  else {
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true); 
+	$('#Description').setValue("À»  «ÿ·«⁄«  »Ê”Ì·Â œ—ŒÊ«”  ﬂ‰‰œÂ „·€Ì ‘œ!",$("#Description").getNumberRows(),'2'); 
+  }
+});

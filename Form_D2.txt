@@ -1,0 +1,53 @@
+//‰„«Ì‘ ’›ÕÂ
+$("#60766601562ba988cb7bb05072330267").css({"backgroundColor":"#ccccff"});
+$("#60766601562ba988cb7bb05072330267").css({"border":"3px double #336699"});
+
+
+$("#title0000000001").css({"font-family":"b Titr","color":"#ffffff","background-color":"#336699","border-radius":"5px"});
+$("#title0000000001").css({"text-align":"center"});
+
+$("#Subject").css({"font-family":"ARIAL","background-color":"#E2F7BB","border-radius":"5px","margin-bottom":"20px"});
+
+$("#submit0000000001").css({"font-family":"b titr","margin-top":"20px"});
+
+//Å— ﬂ—œ‰ gridview  --- 
+if ($("#Description").getNumberRows() == 1 && $("#Description").getValue (1,1) =="") {
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',false);
+  	$("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  }else{
+	$("#Description").addRow();
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true); 
+    $("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  };
+
+//  ‰ŸÌ„  Ê÷ÌÕ« 
+
+$("#Subject_Row_No").hide();
+$("#IsDelete").hide();
+
+$("#Confirmation").setOnchange(function(ConVal) {
+
+  ConVal = $("#Confirmation").getValue();
+  
+  switch (true) {
+   
+    case (ConVal == 1) : 
+
+	  $("#submit0000000001").show();
+	  $('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true);
+      $("#Description").setValue("«ÿ·«⁄«  „—»ÊÿÂ Õ–› ŒÊ«Âœ ‘œ ...",$("#Description").getNumberRows(),'2');
+      $("#IsDelete").setValue(ConVal);
+      break;
+      
+    case (ConVal == 0) : 
+
+	  $("#submit0000000001").show();
+	  $('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',false);
+      $("#Description").setValue("",$("#Description").getNumberRows(),'2');
+      $("#IsDelete").setValue(ConVal);
+      alert ("⁄·  ⁄œ„ Õ–› «ÿ·«⁄«  »«Ì” Ì œ—Ã ‘Êœ!");
+      break;
+      
+  }
+
+});

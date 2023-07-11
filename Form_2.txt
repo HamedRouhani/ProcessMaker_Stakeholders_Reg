@@ -1,0 +1,96 @@
+//‰„«Ì‘ ’›ÕÂ
+$("#55099487362b1932006fbf6056274173").css({"backgroundColor":"#ccccff"});
+$("#55099487362b1932006fbf6056274173").css({"border":"3px double #336699"});
+
+
+$("#title0000000001").css({"font-family":"b Titr","color":"#ffffff","background-color":"#336699","border-radius":"5px"});
+$("#title0000000001").css({"text-align":"center"});
+
+$("#Subject_Finder").css({"font-family":"ARIAL","background-color":"#E2F7BB","border-radius":"5px","margin-bottom":"20px"});
+
+$("#submit0000000001").css({"font-family":"b titr","margin-top":"20px"});
+
+//Å— ﬂ—œ‰ gridview  --- 
+if ($("#Description").getNumberRows() == 1 && $("#Description").getValue (1,1) =="") {
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',false);
+  	$("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  }else{
+	$("#Description").addRow();
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',false); 
+    $("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  };
+
+
+// ‰„«Ì‘  ⁄ÌÌ‰ Ê÷⁄Ì  œ—ŒÊ«” 
+
+  	$('#Subject_Counter').hide();
+
+
+let RT = $("#Reg_Type").getValue();
+
+switch (true){
+  case(RT == 1):   
+  	$('#Supplier_Code').hide();
+  	$('#Supplier_Abbr_Title').hide();
+  	$('#Supplier_Full_Title').hide();
+ 	$('#Established_Date').hide();
+  	$('#Supplier_Registration_Date').hide();
+  	$('#Supplier_Economic_Code').hide();
+  	$('#Supplier_Ownership_Find').hide();
+  	$('#Supplier_Phone_No').hide();
+  	$('#Supplier_Fax_No').hide();
+  	$('#Supplier_Zipcode').hide();
+  	$('#Supplier_Address').hide();
+  	$('#Supplier_Email').hide();
+  	$('#CEO_Full_Name').hide();
+  	$('#CEO_National_Code').hide();
+  	$('#Subject_Finder').hide();
+    break;
+  case(RT != 1):   
+  	$('#Supplier_Code').show();
+  	$('#Supplier_Abbr_Title').show();
+  	$('#Supplier_Full_Title').show();
+ 	$('#Established_Date').show();
+  	$('#Supplier_Registration_Date').show();
+  	$('#Supplier_Economic_Code').show();
+  	$('#Supplier_Ownership_Find').show();
+  	$('#Supplier_Phone_No').show();
+  	$('#Supplier_Fax_No').show();
+  	$('#Supplier_Zipcode').show();
+  	$('#Supplier_Address').show();
+  	$('#Supplier_Email').show();
+  	$('#CEO_Full_Name').show();
+  	$('#CEO_National_Code').show();
+  	$('#Subject_Finder').show();
+    break;
+};
+
+
+$("#Request_Result").setOnchange(function(RR) {
+  RR = $('#Request_Result').getValue();
+  if (RR == 1) {
+    
+    $("#Description").setValue('œ—ŒÊ«”  «ÌÃ«œ / Õ–› / Ã«Ìê“Ì‰Ì «ÿ·«⁄«  ﬁ«»· ﬁ»Ê· «”  ...',$("#Description").getNumberRows(),'2');
+    $('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true); 
+    
+  } else {
+    
+    $("#Description").setValue('',$("#Description").getNumberRows(),'2');
+    $('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',false); 
+    
+  }
+});
+
+//œ— ’Ê— ÌﬂÂ ÃœÊ· «‰ Œ«» ‰‘Êœ ° ›—¬Ì‰œ «’·«Õ «Ã—« ‰‘Êœ
+
+$("#55099487362b1932006fbf6056274173").setOnSubmit(function(RVal,SCode) {
+
+  RVal = $("#Request_Result").getValue();
+	
+  if (RVal==""){
+    alert ("‰ ÌÃÂ »——”Ì œ—ŒÊ«”  »«Ì” Ì «‰ Œ«» ‘Êœ !");
+    $("#Request_Result").css("border", "1px solid red");
+    return false;
+  }
+  
+});

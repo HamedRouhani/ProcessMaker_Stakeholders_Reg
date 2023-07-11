@@ -1,0 +1,169 @@
+//‰„«Ì‘ ’›ÕÂ
+$("#35809326162b2c7bf795c84066826563").css({"backgroundColor":"#ccccff"});
+$("#35809326162b2c7bf795c84066826563").css({"border":"3px double #336699"});
+
+
+$("#title0000000001").css({"font-family":"b Titr","color":"#ffffff","background-color":"#336699","border-radius":"5px"});
+$("#title0000000001").css({"text-align":"center"});
+
+$("#Subject").css({"font-family":"ARIAL","background-color":"#E2F7BB","border-radius":"5px","margin-bottom":"20px"});
+
+$("#submit0000000001").css({"font-family":"b titr"});
+
+//Å— ﬂ—œ‰ gridview  --- 
+if ($("#Description").getNumberRows() == 1 && $("#Description").getValue (1,1) =="") {
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true);
+  	$("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  }else{
+	$("#Description").addRow();
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true); 
+    $("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  };
+
+// ﬁÊÌ„ ‘„”Ì
+$("input[id *= 'Supplier_Registration_Date']").datepicker();
+
+//  ⁄ÌÌ‰ –Ì‰›⁄«‰
+$("#Counter").hide();
+$("#Subject_Row_No").hide();
+
+$("#Interested_Party").setOnchange(function(IVal) {
+ IVal = $("#Interested_Party").getValue();
+  
+  for (let i = 1; i < $("#Subject").getNumberRows()+1; i++) {
+  
+  switch (true){
+    case (IVal == "N"): $("#Subject").setValue(1,i,8);break;
+    case (IVal == "M"): $("#Subject").setValue(2,i,8);break;
+    case (IVal == "S"): $("#Subject").setValue(3,i,8);break;
+  }
+    
+  }
+        
+});
+
+$("#Subject").onAddRow(function(IVal) {
+ IVal = $("#Interested_Party").getValue();
+
+  switch (true){
+    case (IVal == "N"): $("#Subject").setValue(1,$("#Subject").getNumberRows(),8);break;
+    case (IVal == "M"): $("#Subject").setValue(2,$("#Subject").getNumberRows(),8);break;
+    case (IVal == "S"): $("#Subject").setValue(3,$("#Subject").getNumberRows(),8);break;
+  }
+          
+});
+
+
+// «ÌÃ«œ ﬂœ  «„Ì‰ ﬂ‰‰œÂ Ê ‘„«—‰œÂ —œÌ› „Ê÷Ê⁄« 
+
+$("#submit0000000001").hide();
+
+
+$("#button_code").find("button").click(function(Y,SP,COUNTER,RVal,SVal,i,j,RN,check,CVal,IVal) {
+  
+  $("#submit0000000001").hide();
+  Y = $("#CurrentYear").getValue().substring(2,);
+  SP = $("#Supplier_Party").getValue();
+  COUNTER = $("#Counter").getValue();
+  RVal = $("#Supplier_Party").getValue();
+  RN = $("#Subject").getNumberRows();
+  IVal = $("#Interested_Party").getValue();
+  check = "Yes";
+    
+  if (RVal == "") {
+    $("#submit0000000001").hide();
+    $("#Supplier_Code").setValue("");
+    $("#Supplier_Party").css("border", "1px solid red");
+    alert( "»«Ì” Ì ‘Œ’Ì   «„Ì‰ ﬂ‰‰œÂ «‰ Œ«» ‘Êœ!");
+    check = "No";
+  } 
+  else {
+    
+    $("#Supplier_Party").css("border", "1px solid green");
+    $("#Description").setValue("«ÿ·«⁄«  „—»Êÿ »Â  «„Ì‰ ﬂ‰‰œÂ œ— Õ«·  ﬂ„Ì· «”  ....",$("#Description").getNumberRows(),'2');
+    
+  	i = 1; 
+    while (i-1 < RN){
+      
+      $('#Subject').getControl(i,1).css("background-color", "");
+      i++;
+      
+    }
+  	
+    i = 1;
+    while (i-1 < RN) {
+    
+    SVal = $("#Subject").getValue(i,1);
+    
+    if (SVal == "") {
+      alert( "»«Ì” Ì „Ê÷Ê⁄ ﬂ«—Ì »—«Ì —œÌ› " + i + " «‰ Œ«» ‘Êœ!");
+      $('#Subject').getControl(i,1).css("border", "1px solid red");
+      $("#submit0000000001").hide();
+      $("#Supplier_Code").setValue("");
+      $("#Subject_Row_No").setValue("");
+      check = "No";
+    }else {
+      
+      j = i+1;
+      
+      while (j-1 < RN){
+        
+        CVal = $("#Subject").getValue(j,1);
+                
+        if (SVal == CVal){
+          alert("—œÌ›Â«Ì " + i + " Ê " + j + " „‘«»Â Â” ‰œ!");
+          $('#Subject').getControl(i,1).css("background-color", "orange");
+          $('#Subject').getControl(j,1).css("background-color", "orange");
+          $("#submit0000000001").hide();
+      	  $("#Supplier_Code").setValue("");
+          $("#Subject_Row_No").setValue("");
+          check = "No";
+        }
+        j++;
+      } 
+      	$('#Subject').getControl(i,1).css("border", "1px solid green");
+      }
+    
+      i++;
+    }
+    
+    
+  } 
+    if (check == "Yes"){ 
+      
+		$("#Description").setValue("«ÿ·«⁄«  Å«ÌÂ „—»Êÿ »Â  «„Ì‰ ﬂ‰‰œÂ œ—Ã ê—œÌœ  ....",$("#Description").getNumberRows(),'2');
+      
+    switch (true){
+          
+          case (COUNTER < 9):
+            $("#Supplier_Code").setValue(IVal+SP+Y+"000"+(parseInt(COUNTER)+1));
+            $("#submit0000000001").show();
+        	$("#Subject_Row_No").setValue(RN);
+        	i++;
+            break;
+            
+          case (COUNTER < 99 && COUNTER > 8):
+            $("#Supplier_Code").setValue(IVal+SP+Y+"00"+(parseInt(COUNTER)+1));
+            $("#submit0000000001").show();
+        	$("#Subject_Row_No").setValue(RN);
+        	
+        	i++;
+            break;
+          
+          case (COUNTER < 999 && COUNTER > 98):
+            $("#Supplier_Code").setValue(IVal+SP+Y+"0"+(parseInt(COUNTER)+1));
+            $("#submit0000000001").show();
+        	$("#Subject_Row_No").setValue(RN);
+        	i++;
+            break;  
+          
+          case (COUNTER > 998):
+            $("#Supplier_Code").setValue(IVal+SP+Y+(parseInt(COUNTER)+1));
+            $("#submit0000000001").show();
+        	$("#Subject_Row_No").setValue(RN);
+        	i++;
+            break;
+            
+        }
+    }
+});
